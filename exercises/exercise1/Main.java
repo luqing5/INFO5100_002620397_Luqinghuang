@@ -1,29 +1,31 @@
 package exercises.exercise1;
 
-public class Main {
+public class Main{
     public static void main(String[] args){
-        Student[] students=new Student[20];
-        int[] quizScores=new int[10];
-        int[] examScores=new int[2];
-        for (int i=0; i< quizScores.length; i++){
-            quizScores[i]=(int)(Math.random()*100);
-        }
-        for(int i=0; i<examScores.length; i++){
-            examScores[i]=(int)(Math.random()*100);
-        }
+        Session session=new Session();
 
-        // create the random data of student
-        for(int i=0; i<students.length; i++){
-            if (Math.random()>0.5){
-                students[i]=new FullTime("Fulltime"+i, quizScores, examScores);
-            }
-            else{
-                students[i]=new PartTime("Parttime"+i, quizScores);
+        //create and add 20 students with dummy scores
+        for (int i=1;i<=20;i++){
+            if(i%2==0){
+                FullTimeStudent fullTimeStudent=new FullTimeStudent("Full-Time Student" +i, i*10,i*5);
+                fullTimeStudent.addQuizScore(i*2);
+                fullTimeStudent.addQuizScore(i*3);
+                session.addStudent(fullTimeStudent);
+
+            } else{
+                PartTimeStudent partTimeStudent=new PartTimeStudent("Part-Time Student "+i);
+                partTimeStudent.addQuizScore(i*4);
+                partTimeStudent.addQuizScore(i*2);
+                session.addStudent(partTimeStudent);
             }
         }
-        Session session=new Session(students);
-        System.out.println("Average quiz score: "+ session.getAverageQuizScore());
-        session.printQuizScoresInAscendingOrder();
+        //output
+        session.printAverageQuizScores();
+        System.out.println();
+        session.printQuizScoresAscendingOrder();
+        System.out.println();
+        session.printPartTimeStudents();
+        System.out.println();
+        session.printFullTimeStudentExams();
     }
-    
 }

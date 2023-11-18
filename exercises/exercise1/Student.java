@@ -1,39 +1,29 @@
 package exercises.exercise1;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Student {
-    String name;
-    int[] quizScores;
+public class Student{
+    protected String name;
+    protected List<Integer> quizScores;
 
-public Student(String name, int[] quizScores){
-   this.name=name;
-   this.quizScores=quizScores;
- }
- public String getName(){
-    return name;
- }
- public int[] getQuizScores(){
-    return quizScores;
- }
-}
-
-class FullTime extends Student{
-    int[] examScores=new int[2];
-
-    public FullTime(String name, int[] quizScores, int[] examScores){
-        super(name, quizScores);
-        this.examScores=examScores;
+    public Student(String name){
+        this.name=name;
+        this.quizScores=new ArrayList<>();
     }
-
-    public int[] getExamScores(){
-        return examScores;
+    public void addQuizScore(int score){
+        quizScores.add(score);
     }
-}
-
-class PartTime extends Student{
-
-    public PartTime(String name, int[] quizScores) {
-        super(name, quizScores);
-       
+    public double calculateAverageQuizScore(){
+        if (quizScores.isEmpty()){
+            return 0;
+        }
+        int total=quizScores.stream().mapToInt(Integer::intValue).sum();
+        return (double) total / quizScores.size();
     }
-    
+    public String getName(){
+        return name;
+    }
+    public List<Integer> getQuizScores(){
+        return quizScores;
+    }
 }

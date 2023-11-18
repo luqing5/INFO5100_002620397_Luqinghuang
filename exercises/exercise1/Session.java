@@ -1,34 +1,49 @@
 package exercises.exercise1;
-
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Session {
-    Student[] students=new Student[20];
+    private List<Student> students;
 
-    public Session(Student[] students){
-        this.students=students;
+    public Session(){
+        students=new ArrayList<>();
     }
-
-
-// calculate average quiz scores each sudent
-public double getAverageQuizScore(){
-    double sum=0;
-    for (Student student:students){
-        for (int i=0; i<student.getQuizScores().length; i++){
-            sum += student.getQuizScores()[i];
+    public void addStudent(Student student){
+        students.add(student);
+    }
+    public void printAverageQuizScores(){
+        System.out.println("Average Quiz Scores for All Students: ");
+        for (Student student:students){
+            System.out.println("Name: "+student.getName()+", Average Quiz Score: "+student.calculateAverageQuizScore());
         }
     }
-    return sum / students.length;
- }
- // print the quiz scores each student
- public void printQuizScoresInAscendingOrder(){
-    for (Student student:students){
-        int[] quizScores=student.getQuizScores();
-        Arrays.sort(quizScores);
-        for (int i=0; i<quizScores.length; i++){
-            System.out.print(quizScores[i] +" ");
+    public void printQuizScoresAscendingOrder(){
+        System.out.println("Quiz Scores(Ascending) for All Students: ");
+        for(Student student:students){
+           List<Integer> scores=new ArrayList<>(student.getQuizScores());
+           Collections.sort(scores);
+           System.out.println("Name: "+student.getName()+", Quiz Scores: " + scores);
+
         }
-        System.out.println();
     }
- }
+    public void printPartTimeStudents(){
+        System.out.println("Part-Time Students: ");
+        for (Student student: students){
+            if(student instanceof PartTimeStudent){
+                System.out.println(student.getName());
+            }
+        }
+    }
+    public void printFullTimeStudentExams(){
+        System.out.println("Full-Time Student Exam Scores:");
+        for(Student student: students){
+            if(student instanceof FullTimeStudent){
+                FullTimeStudent fullTimeStudent=(FullTimeStudent) student;
+                System.out.println("Name: "+fullTimeStudent.getName()+", Exam Score 1: "+fullTimeStudent.getExamScore1()+", Exam Score 2: "+fullTimeStudent.getExamScore2());
+            }
+        }
+    }
+
+    
 }
