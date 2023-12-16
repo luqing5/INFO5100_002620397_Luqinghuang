@@ -1,0 +1,14 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx-swt.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.base.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.controls.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.fxml.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.graphics.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.media.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.swing.jar",
+    "/Users/luqinghuang/Downloads/javafx-sdk-21.0.1 5/lib/javafx.web.jar"
+  ],
+  "java.project.sourcePaths": ["exercises/exercise4", "exercises/exercise3b"]
+}
